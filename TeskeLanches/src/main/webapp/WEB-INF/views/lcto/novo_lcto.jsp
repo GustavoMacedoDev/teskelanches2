@@ -24,6 +24,7 @@
     <hr>
     <div>
     	<h1>Mesa: ${mesa.numero }</h1>
+    	<h1>Mesa: ${mesa.id }</h1>
     </div>
    
    <c:url var="save" value="/lancamento/save"/>

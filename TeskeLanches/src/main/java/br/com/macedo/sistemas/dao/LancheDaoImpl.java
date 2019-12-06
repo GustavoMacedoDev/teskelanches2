@@ -59,4 +59,12 @@ public class LancheDaoImpl implements LancheDao {
 		return null;
 	}
 
+	@Override
+	public Lanche getId(Integer id) {
+		String jpql = "from Lanche l where l.id = :id";
+        TypedQuery<Lanche> query = entityManager.createQuery(jpql, Lanche.class);
+        query.setParameter("id", id);
+        return query.getSingleResult();
+	}
+
 }

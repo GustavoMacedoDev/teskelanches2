@@ -10,6 +10,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import br.com.macedo.sistemas.web.conversor.LanchesConverter;
+
 
 @Configuration
 public class SpringMvcConfig extends WebMvcConfigurerAdapter {
@@ -29,6 +31,11 @@ public class SpringMvcConfig extends WebMvcConfigurerAdapter {
 		return resolver;
 	}
 
+	
+	 @Override  
+	  public void addFormatters(FormatterRegistry registry) {  
+	      registry.addConverter(new LanchesConverter());  
+	  }  
 	
 	@Bean
 	public MessageSource messageSource() {

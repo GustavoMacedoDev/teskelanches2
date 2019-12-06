@@ -17,6 +17,8 @@ public interface LancheDao {
 	List<Lanche> getTodos();
 	
 	List<Lanche> getByName(String nome);
+
+	Lanche getId(Integer id);
 	
 
 }

@@ -10,6 +10,7 @@ public class Lanche {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "lanche_id")
 	private Long id;
 	
 	@Column(nullable = false, length = 50)
@@ -18,7 +19,7 @@ public class Lanche {
 	
 	private double valor;
 	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(
 			name = "lancamento_lanche",	
 			joinColumns = @JoinColumn(name = "lanche_id"),

@@ -19,7 +19,7 @@ public class LancamentoDaoImpl implements LancamentoDao {
 	
 	@Override
 	public void salvar(Lancamento lancamento) {
-		entityManager.persist(lancamento);
+		entityManager.merge(lancamento);
 	}
 
 	@Override
