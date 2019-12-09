@@ -24,7 +24,7 @@ public class LancamentoController {
 	private LancamentoDao dao;
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ModelAndView save(@Valid @ModelAttribute("lancamento") @Validated Lancamento lancamento, BindingResult result,
+	public ModelAndView save(@Valid @ModelAttribute("lancamento") Lancamento lancamento, BindingResult result,
 			RedirectAttributes attr) {
 		
 		System.out.println(lancamento.getLanches());

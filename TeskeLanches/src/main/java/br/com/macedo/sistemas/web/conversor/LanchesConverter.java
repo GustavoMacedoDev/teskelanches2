@@ -13,11 +13,15 @@ public class LanchesConverter implements Converter<String[], List<Lanche>> {
     
 	@Autowired
     private LancheDao dao;
-    public List<Lanche> convert(String[] ids) {
-        List<Lanche> list = new ArrayList<Lanche>();
-        for (String id : ids) {
-            list.add(dao.getId(Integer.valueOf(id)));
-        }
-        return list;
-    }
+    
+	public List<Lanche> convert(String[] ids) {  
+        List<Lanche> list = new ArrayList<Lanche>();  
+        for (String id : ids) {  
+            if (!id.equals("0")) {  
+                list.add(new Lanche(Long.parseLong(id)));  
+            }  
+        }  
+        return list;  
+    }  
+ 
 } 

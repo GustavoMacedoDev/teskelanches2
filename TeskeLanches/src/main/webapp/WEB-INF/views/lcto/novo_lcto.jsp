@@ -29,14 +29,16 @@
    
    <c:url var="save" value="/lancamento/save"/>
 	<form:form modelAttribute="lancamento" action="${save}" method="post">
-		<form:hidden path="id"/>												 
+	  <input id="mesa.id" name="mesa.id" type="hidden" value="${mesa.id}"/>  
 		<fieldset>
-			<form:hidden path="mesa"/>
 			<div class="campo">
 				<form:label path="lanches">Selecione os lanches</form:label>
 				<form:select multiple="true" path="lanches">
 					<form:options items="${lanches}" itemValue="id" itemLabel="nome"/>
 				</form:select>
+			  <input type="hidden" name="lanches" value="0"/>
+				
+				
 			</div>
 			<div>
 				 <button type="submit" class="btn btn-primary">Confirmar</button>

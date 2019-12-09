@@ -37,7 +37,7 @@ public class MesaController {
 	
 	
 	@RequestMapping(value = "/nova/{id}", method = RequestMethod.GET)
-	public ModelAndView preSave(@ModelAttribute("lancamento") @Validated Lancamento lancamento, @PathVariable("id") Long id) {
+	public ModelAndView preSave(@ModelAttribute("lancamento") Lancamento lancamento, @PathVariable("id") Long id) {
 		ModelAndView view = new ModelAndView("/lcto/novo_lcto");
 		Mesa mesa = daoMesa.getId(id);
 		List<Lanche> lanches = daoLanche.getTodos();

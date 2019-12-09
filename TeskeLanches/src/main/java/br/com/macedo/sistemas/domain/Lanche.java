@@ -27,6 +27,10 @@ public class Lanche {
 		)
 	private List<Lancamento> lancamentos;
 	
+	public Lanche(Long id) {
+		this.id = id;
+	}
+	
 	public Lanche() {
 		super();
 	}
