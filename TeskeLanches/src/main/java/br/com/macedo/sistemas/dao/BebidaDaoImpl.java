@@ -45,6 +45,7 @@ public class BebidaDaoImpl implements BebidaDao{
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Bebida> getTodos() {
 		String jpql = "from Bebida b";
 		TypedQuery<Bebida> query = entityManager.createQuery(jpql, Bebida.class);

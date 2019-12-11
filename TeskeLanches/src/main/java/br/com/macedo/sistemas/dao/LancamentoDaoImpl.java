@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.macedo.sistemas.domain.Bebida;
 import br.com.macedo.sistemas.domain.Lancamento;
 
 @Repository
@@ -50,6 +52,15 @@ public class LancamentoDaoImpl implements LancamentoDao {
 	public List<Lancamento> getByName(String nome) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Lancamento> getByMesa(Long id) {
+		String jpql = "select l from Lancamento l where l.mesa.id = :id";
+		TypedQuery<Lancamento> query = entityManager.createQuery(jpql, Lancamento.class);
+		query.setParameter("id", id);
+		return query.getResultList();
 	}
 
 }

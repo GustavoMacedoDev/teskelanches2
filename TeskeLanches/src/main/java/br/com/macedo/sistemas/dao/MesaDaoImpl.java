@@ -52,4 +52,21 @@ public class MesaDaoImpl implements MesaDao{
 				
 	}
 
+	@Override
+	public Integer getStatus(Long id) {
+		
+		String jpql = "select m.statusMesa from Mesa m where m.id = :id";
+		TypedQuery<Integer> query = entityManager.createQuery(jpql, Integer.class);
+		query.setParameter("id", id);
+		
+		System.out.print(query.getSingleResult());
+		
+		return query.getSingleResult();
+	
+	
+
+	}
+
+	
+
 }

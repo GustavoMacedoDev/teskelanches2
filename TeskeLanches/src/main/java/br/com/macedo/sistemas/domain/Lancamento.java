@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.Fetch;
+
 @Entity
 @Table(name = "lancamento")
 public class Lancamento implements Serializable {
@@ -27,8 +29,23 @@ public class Lancamento implements Serializable {
 		)
 	private List<Lanche> lanches;
 	
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(
+			name = "lancamento_bebida",	
+			joinColumns = @JoinColumn(name = "lancamento_id"),
+			inverseJoinColumns = @JoinColumn(name = "bebida_id")
+		
+		)
+	@Fetch(org.hibernate.annotations.FetchMode.SUBSELECT)
+	private List<Bebida> bebidas;
+	
 	public Lancamento() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public Lancamento(Long id) {
+		this.id = id;
 	}
 
 	public Lancamento(Long id, Mesa mesa) {
@@ -61,10 +78,20 @@ public class Lancamento implements Serializable {
 		this.lanches = lanches;
 	}
 
+	
+	public List<Bebida> getBebidas() {
+		return bebidas;
+	}
+
+	public void setBebidas(List<Bebida> bebidas) {
+		this.bebidas = bebidas;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((bebidas == null) ? 0 : bebidas.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((lanches == null) ? 0 : lanches.hashCode());
 		result = prime * result + ((mesa == null) ? 0 : mesa.hashCode());
@@ -80,6 +107,11 @@ public class Lancamento implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Lancamento other = (Lancamento) obj;
+		if (bebidas == null) {
+			if (other.bebidas != null)
+				return false;
+		} else if (!bebidas.equals(other.bebidas))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -97,8 +129,6 @@ public class Lancamento implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
-	
 
+	
 }

@@ -13,13 +13,13 @@ public class Lanche {
 	@Column(name = "lanche_id")
 	private Long id;
 	
-	@Column(nullable = false, length = 50)
-	private String nome;
+	@Column(nullable = false, length = 50, name = "nome_lanche")
+	private String nomeLanche;
 	
-	
+	@Column(name = "valor_lanche")
 	private double valor;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 			name = "lancamento_lanche",	
 			joinColumns = @JoinColumn(name = "lanche_id"),
@@ -35,16 +35,6 @@ public class Lanche {
 		super();
 	}
 
-	
-	public Lanche(Long id, String nome, double valor) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.valor = valor;
-	}
-
-
-
 	public Long getId() {
 		return id;
 	}
@@ -53,12 +43,14 @@ public class Lanche {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	
+	
+	public String getNomeLanche() {
+		return nomeLanche;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNomeLanche(String nomeLanche) {
+		this.nomeLanche = nomeLanche;
 	}
 
 	public double getValor() {
@@ -82,7 +74,7 @@ public class Lanche {
 
 	@Override
 	public String toString() {
-		return "Lanche [nome=" + nome + "]";
+		return "Lanche [nome=" + nomeLanche + "]";
 	}
 	
 	

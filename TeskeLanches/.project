@@ -3,6 +3,7 @@
 	<name>TeskeLanches</name>
 	<comment></comment>
 	<projects>
+		<project>spring-web-4.2.2.RELEASE</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

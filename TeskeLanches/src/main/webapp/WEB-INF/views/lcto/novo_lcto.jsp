@@ -34,10 +34,16 @@
 			<div class="campo">
 				<form:label path="lanches">Selecione os lanches</form:label>
 				<form:select multiple="true" path="lanches">
-					<form:options items="${lanches}" itemValue="id" itemLabel="nome"/>
+					<form:options items="${lanches}" itemValue="id" itemLabel="nomeLanche"/>
 				</form:select>
-			  <input type="hidden" name="lanches" value="0"/>
-				
+			  	<input type="hidden" name="lanches" value="0"/>
+			  	
+				<form:label path="bebidas">Selecione as bebidas</form:label>
+				<form:select multiple="true" path="bebidas">
+					<form:options items="${bebidas}" itemValue="id" itemLabel="nomeBebida"/>
+				</form:select>
+			  <input type="hidden" name="bebidas" value="0"/>
+					
 				
 			</div>
 			<div>

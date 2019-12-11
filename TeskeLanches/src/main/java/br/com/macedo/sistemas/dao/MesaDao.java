@@ -16,4 +16,8 @@ public interface MesaDao {
 	
 	List<Mesa> getTodos();
 	
+	Integer getStatus(Long id);
+	
+	
+	
 }

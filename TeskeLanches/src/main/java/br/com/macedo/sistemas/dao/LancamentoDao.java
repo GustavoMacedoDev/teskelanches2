@@ -17,4 +17,10 @@ public interface LancamentoDao {
 	List<Lancamento> getTodos();
 	
 	List<Lancamento> getByName(String nome);
+	
+	List<Lancamento> getByMesa(Long id);
+	
+	
+	
+	
 }

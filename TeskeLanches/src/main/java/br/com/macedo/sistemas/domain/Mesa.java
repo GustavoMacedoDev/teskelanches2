@@ -12,13 +12,22 @@ public class Mesa {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(name = "numero_mesa")
 	private String numero;
+	
+	@Column(name = "status_mesa")
+	private int statusMesa = 0;
 	
 	@OneToMany(mappedBy = "mesa")
 	private List<Lancamento> lancamentos;
 	
+	
 	public Mesa() {
 		super();
+	}
+	
+	public Mesa(Long id) {
+		this.id = id;
 	}
 
 	public Mesa(Long id, String numero) {
@@ -41,6 +50,15 @@ public class Mesa {
 
 	public void setNumero(String numero) {
 		this.numero = numero;
+	}
+	
+
+	public int getStatusMesa() {
+		return statusMesa;
+	}
+
+	public void setStatusMesa(int statusMesa) {
+		this.statusMesa = statusMesa;
 	}
 
 	public List<Lancamento> getLancamentos() {

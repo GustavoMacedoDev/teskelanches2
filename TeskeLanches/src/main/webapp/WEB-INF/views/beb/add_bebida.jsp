@@ -25,9 +25,9 @@
         <form:form modelAttribute="bebida" action="${save }" method="post">
         	<form:hidden path="id"/>
             <div class="form-group">
-                <label for="nome">Nome: </label>
-                <form:input path="nome" class="form-control"/>   
-                <form:errors path="nome" cssClass="label label-danger"/>             
+                <label for="nomeBebida">Nome: </label>
+                <form:input path="nomeBebida" class="form-control"/>   
+                <form:errors path="nomeBebida" cssClass="label label-danger"/>             
             </div>
             <div class="form-group">
                 <label for="valor">Valor: </label>
