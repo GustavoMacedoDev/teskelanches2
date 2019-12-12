@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.macedo.sistemas.dao.LancamentoDao;
+import br.com.macedo.sistemas.dao.MesaDao;
 import br.com.macedo.sistemas.domain.Lancamento;
 
 
@@ -21,7 +22,10 @@ import br.com.macedo.sistemas.domain.Lancamento;
 public class LancamentoController {
 	
 	@Autowired
-	private LancamentoDao dao;
+	private LancamentoDao daoLancamento;
+	
+	@Autowired
+	private MesaDao daoMesa;
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ModelAndView save(@Valid @ModelAttribute("lancamento") Lancamento lancamento, BindingResult result,
@@ -35,7 +39,8 @@ public class LancamentoController {
 			return new ModelAndView("/lcto/novo_lcto");
 		}
 		
-		dao.salvar(lancamento);
+		daoLancamento.salvar(lancamento);
+		daoMesa.abreMesa(mesa);
 		attr.addFlashAttribute("message", "Lançamento salvo");
 		return new ModelAndView("redirect:/mesa/todos");
 	}

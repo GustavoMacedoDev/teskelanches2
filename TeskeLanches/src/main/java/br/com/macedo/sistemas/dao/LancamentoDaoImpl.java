@@ -9,7 +9,6 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.macedo.sistemas.domain.Bebida;
 import br.com.macedo.sistemas.domain.Lancamento;
 
 @Repository
@@ -58,6 +57,14 @@ public class LancamentoDaoImpl implements LancamentoDao {
 	@Transactional(readOnly = true)
 	public List<Lancamento> getByMesa(Long id) {
 		String jpql = "select l from Lancamento l where l.mesa.id = :id";
+		TypedQuery<Lancamento> query = entityManager.createQuery(jpql, Lancamento.class);
+		query.setParameter("id", id);
+		return query.getResultList();
+	}
+	
+	@Override
+	public List<Lancamento> getByBebida(Long id) {
+		String jpql = "select l from Lancamento l JOIN l.bebidas beb where beb.id = :id";
 		TypedQuery<Lancamento> query = entityManager.createQuery(jpql, Lancamento.class);
 		query.setParameter("id", id);
 		return query.getResultList();

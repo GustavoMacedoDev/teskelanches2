@@ -20,7 +20,5 @@ public interface LancamentoDao {
 	
 	List<Lancamento> getByMesa(Long id);
 	
-	
-	
-	
+	List<Lancamento> getByBebida(Long id);
 }

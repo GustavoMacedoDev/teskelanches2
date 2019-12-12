@@ -63,10 +63,13 @@ public class MesaDaoImpl implements MesaDao{
 		
 		return query.getSingleResult();
 	
-	
-
 	}
 
+	@Override
+	public void abreMesa(Mesa mesa) {
+		String jpql = "update m from Mesa set status_mesa = 1";
+		
+	}
 	
 
 }
