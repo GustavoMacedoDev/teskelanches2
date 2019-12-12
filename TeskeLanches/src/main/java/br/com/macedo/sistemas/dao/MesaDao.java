@@ -18,7 +18,7 @@ public interface MesaDao {
 	
 	Integer getStatus(Long id);
 	
-	void abreMesa(Mesa mesa);
+	Mesa abreMesa(Long id);
 	
 	
 }

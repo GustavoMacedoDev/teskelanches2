@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
@@ -66,9 +67,12 @@ public class MesaDaoImpl implements MesaDao{
 	}
 
 	@Override
-	public void abreMesa(Mesa mesa) {
-		String jpql = "update m from Mesa set status_mesa = 1";
+	public Mesa abreMesa(Long id) {
+		Query query = entityManager.createNativeQuery("update Mesa m set status_mesa = 1 where m.id = :id");
+		query.setParameter("id", id);
+		query.executeUpdate();
 		
+		return null;
 	}
 	
 

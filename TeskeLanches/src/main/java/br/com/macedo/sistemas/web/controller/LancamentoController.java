@@ -33,14 +33,14 @@ public class LancamentoController {
 		
 		System.out.println(lancamento.getLanches());
 		System.out.println(lancamento.getId());
-		System.out.println(lancamento.getMesa());
+		System.out.println("mesa" + lancamento.getMesa().getId());
 		
 		if(result.hasErrors()) {
 			return new ModelAndView("/lcto/novo_lcto");
 		}
 		
 		daoLancamento.salvar(lancamento);
-		daoMesa.abreMesa(mesa);
+		daoMesa.abreMesa(lancamento.getMesa().getId());
 		attr.addFlashAttribute("message", "Lançamento salvo");
 		return new ModelAndView("redirect:/mesa/todos");
 	}
