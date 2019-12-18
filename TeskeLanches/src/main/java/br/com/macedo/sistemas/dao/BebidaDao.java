@@ -18,4 +18,6 @@ public interface BebidaDao {
 	
 	List<Bebida> getByName(String nome);
 	
+	List<Bebida> getByLancamento(Long id);
+	
 }

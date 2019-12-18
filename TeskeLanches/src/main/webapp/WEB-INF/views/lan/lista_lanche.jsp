@@ -40,7 +40,7 @@
             <c:forEach var="lanche" items="${lanches }">
                 <tr>
                     <td>${lanche.id }</td>
-                    <td>${lanche.nome }</td>
+                    <td>${lanche.nomeLanche }</td>
                     <td>${lanche.valor }</td>
                     <td>                        
                         <spring:url value="/lanche/update/${lanche.id }" var="update"/>

@@ -20,5 +20,7 @@ public interface LancheDao {
 
 	Lanche getId(Integer id);
 	
+	List<Lanche> getByLancamento(Long id);
+	
 
 }

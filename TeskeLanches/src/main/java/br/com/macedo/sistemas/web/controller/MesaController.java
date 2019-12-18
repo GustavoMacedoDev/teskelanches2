@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -69,17 +68,21 @@ public class MesaController {
 			
 			
 		} else {
-			view = new ModelAndView("/lcto/edita_mesa");
+			view = new ModelAndView("/lcto/lista_mesa");
 			lancamentos = daoLancamento.getByMesa(mesaNova.getId());
 			
 			for(Lancamento lan : lancamentos ) {
 				lanches = lan.getLanches();
 				bebidas = lan.getBebidas();
+				
+				view.addObject("lancamento", lan);
+				
 			}
 			
 			view.addObject("lanches", lanches);
 			view.addObject("mesa", mesaNova.getNumero());
 			view.addObject("bebidas", bebidas);
+			
 			
 		}
 		

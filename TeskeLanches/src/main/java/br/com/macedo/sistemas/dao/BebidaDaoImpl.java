@@ -57,5 +57,15 @@ public class BebidaDaoImpl implements BebidaDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public List<Bebida> getByLancamento(Long id) {
+		String jpql = "select b from Bebida b JOIN b.lancamentos l where l.id = :id";
+		
+		
+		TypedQuery<Bebida> query = entityManager.createQuery(jpql, Bebida.class);
+		query.setParameter("id", id);
+		return query.getResultList();
+	}
 
 }

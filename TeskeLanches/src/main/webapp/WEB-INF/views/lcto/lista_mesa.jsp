@@ -70,6 +70,13 @@
             </tbody>
         </table>
     		
+    		<h1>${lancamento.id }</h1>
+    		
+		<spring:url value="/lancamento/update/${lancamento.id }" var="update"/>
+        <a class="btn btn-info" href="${update }" >Editar</a>
+        <spring:url value="/lanche/delete/${lancamento.id }" var="delete"/>
+        <a class="btn btn-danger" href="${delete }" >Excluir</a>
+    		
 </div>
 <script type="text/javascript">
 window.onload = function() {

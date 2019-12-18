@@ -20,13 +20,12 @@ public class LancamentoDaoImpl implements LancamentoDao {
 	
 	@Override
 	public void salvar(Lancamento lancamento) {
-		entityManager.merge(lancamento);
+		entityManager.persist(lancamento);
 	}
 
 	@Override
 	public void editar(Lancamento lancamento) {
-		// TODO Auto-generated method stub
-		
+		entityManager.merge(lancamento);
 	}
 
 	@Override
@@ -36,14 +35,17 @@ public class LancamentoDaoImpl implements LancamentoDao {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Lancamento getId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		String jpql = "from Lancamento l where l.id = :id";
+        TypedQuery<Lancamento> query = entityManager.createQuery(jpql, Lancamento.class);
+        query.setParameter("id", id);
+        return query.getSingleResult();
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Lancamento> getTodos() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -18,7 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.macedo.sistemas.dao.BebidaDao;
 import br.com.macedo.sistemas.dao.LancamentoDao;
 import br.com.macedo.sistemas.domain.Bebida;
-import br.com.macedo.sistemas.domain.Lancamento;
 
 @Controller
 @RequestMapping("bebida")

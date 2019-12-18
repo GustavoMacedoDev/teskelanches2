@@ -67,4 +67,12 @@ public class LancheDaoImpl implements LancheDao {
         return query.getSingleResult();
 	}
 
+	@Override
+	public List<Lanche> getByLancamento(Long id) {
+		String jpql = "select l from Lanche l JOIN l.lancamentos lan where lan.id = :id";
+		TypedQuery<Lanche> query = entityManager.createQuery(jpql, Lanche.class);
+		query.setParameter("id", id);
+		return query.getResultList();
+	}
+	
 }
