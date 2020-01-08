@@ -10,9 +10,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-import br.com.macedo.sistemas.web.conversor.BebidasConverter;
-import br.com.macedo.sistemas.web.conversor.LanchesConverter;
-
 
 @Configuration
 public class SpringMvcConfig extends WebMvcConfigurerAdapter {
@@ -35,8 +32,8 @@ public class SpringMvcConfig extends WebMvcConfigurerAdapter {
 	
 	 @Override  
 	  public void addFormatters(FormatterRegistry registry) {  
-	      registry.addConverter(new LanchesConverter());
-	      registry.addConverter(new BebidasConverter());
+	     // registry.addConverter(new LanchesConverter());
+	      //registry.addConverter(new BebidasConverter());
 	  }  
 	
 	@Bean

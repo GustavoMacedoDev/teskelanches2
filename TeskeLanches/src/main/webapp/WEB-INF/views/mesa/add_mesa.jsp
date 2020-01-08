@@ -6,33 +6,28 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Cadastro de Lanche</title>
+    <title>Cadastro de Mesas</title>
     <spring:url var="css" value="/static/css/bootstrap.css"/>
     <link type="text/css" rel="stylesheet" href="${css }"/>
 </head>
 <body>
 <div class="container">
-    <h1>Cadastro de Lanches</h1>
+    <h1>Cadastro de Mesas</h1>
     <hr>
     <div>
 
-		<spring:url value="/lanche/todos" var="home"/>
+		<spring:url value="/mesa/todos" var="home"/>
 		<a class="btn btn-default" href="${home }">Home</a>
     </div>
     <hr>
     <div>
-    	<spring:url value="${lanche.id == null ? '/lanche/save' : '/lanche/update'}" var="save"/>
-        <form:form modelAttribute="lanche" action="${save }" method="post">
+    	<spring:url value="${mesa.id == null ? '/mesa/save' : '/mesa/update'}" var="save"/>
+        <form:form modelAttribute="mesa" action="${save }" method="post">
         	<form:hidden path="id"/>
             <div class="form-group">
-                <label for="nomeLanche">Nome: </label>
-                <form:input path="nomeLanche" class="form-control"/>   
-                <form:errors path="nomeLanche" cssClass="label label-danger"/>             
-            </div>
-            <div class="form-group">
-                <label for="valor">Valor: </label>
-                <form:input path="valor"  class="form-control"/>    
-                <form:errors path="valor" cssClass="label label-danger"/>          
+                <label for="numero">Numero: </label>
+                <form:input path="numero" class="form-control"/>   
+                <form:errors path="numero" cssClass="label label-danger"/>             
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Confirmar</button>

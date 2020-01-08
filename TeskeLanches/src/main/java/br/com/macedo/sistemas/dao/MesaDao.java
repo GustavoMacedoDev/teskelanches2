@@ -20,5 +20,7 @@ public interface MesaDao {
 	
 	Mesa abreMesa(Long id);
 	
+	//int getLancamento(Long id);
+	
 	
 }

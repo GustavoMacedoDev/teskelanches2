@@ -21,7 +21,8 @@ public class MesaDaoImpl implements MesaDao{
 	
 	@Override
 	public void salvar(Mesa mesa) {
-		// TODO Auto-generated method stub
+		mesa.setStatusMesa(0);
+		entityManager.persist(mesa);
 		
 	}
 

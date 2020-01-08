@@ -16,8 +16,8 @@
     <br >
 	<h2>Tela Inicial</h2>
 	<hr >
-		<spring:url value="/lanche/todos" var="lanches"/>
-        <a class="btn btn-info" href="${lanches }">Lanche</a>
+		<spring:url value="/produto/todos" var="produtos"/>
+        <a class="btn btn-info" href="${produtos }">Produtos</a>
         <spring:url value="/unidademedida/todos" var="unimedida"/>
         <a class="btn btn-info" href="${unimedida }">Unidade de Medida</a>
         <spring:url value="/bebida/todos" var="bebida"/>

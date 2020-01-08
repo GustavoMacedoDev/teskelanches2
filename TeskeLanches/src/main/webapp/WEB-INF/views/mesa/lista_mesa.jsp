@@ -27,9 +27,9 @@
             <span>${message == null ? '&nbsp;' : message}</span>
         </div>
         <div>
-        	<c:forEach var="mesas" items="${mesa }">
-        		<spring:url value="/mesa/nova/${mesas.id }" var="update"/>
-                <a class="btn btn-info btn-mesa" href="${update }" > ${mesas.numero }</a>
+        	<c:forEach var="mesa" items="${mesas }">
+        		<spring:url value="/mesa/nova/${mesa.id }" var="update"/>
+                <a class="btn btn-info btn-mesa" href="${update }" > ${mesa.numero }</a>
         	</c:forEach>
         </div>
                         

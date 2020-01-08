@@ -26,8 +26,8 @@
     	<h1>Mesa: ${mesa.numero }</h1>
     </div>
    
-   <c:url var="save" value="/lancamento/save"/>
-	<form:form modelAttribute="lancamento" action="${save}" method="post">
+   <c:url var="update" value="/lancamento/update"/>
+	<form:form modelAttribute="lancamento" action="${update}" method="post">
 	  <input id="mesa.id" name="mesa.id" type="hidden" value="${mesa.id}"/>  
 		<fieldset>
 			<div class="campo">
@@ -44,7 +44,6 @@
 					<form:checkboxes path="bebidas" items="${bebidas}" itemValue="id" itemLabel="nomeBebida" />
 			  		<input type="hidden" name="bebidas" value="0"/>
 				</div>
-			  <input type="hidden" name="bebidas" value="0"/>
 			</div>
 			<div>
 				 <button type="submit" class="btn btn-primary">Confirmar</button>

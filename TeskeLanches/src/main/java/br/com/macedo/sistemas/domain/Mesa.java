@@ -1,5 +1,6 @@
 package br.com.macedo.sistemas.domain;
 
+
 import java.util.List;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ public class Mesa {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "mesa_id")
 	private Long id;
 	
 	@Column(name = "numero_mesa")
@@ -19,8 +21,7 @@ public class Mesa {
 	private int statusMesa = 0;
 	
 	@OneToMany(mappedBy = "mesa")
-	private List<Lancamento> lancamentos;
-	
+	private List<Pedido> pedidos;
 	
 	public Mesa() {
 		super();
@@ -61,12 +62,14 @@ public class Mesa {
 		this.statusMesa = statusMesa;
 	}
 
-	public List<Lancamento> getLancamentos() {
-		return lancamentos;
+	public List<Pedido> getPedidos() {
+		return pedidos;
 	}
 
-	public void setLancamentos(List<Lancamento> lancamentos) {
-		this.lancamentos = lancamentos;
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 
+	
+	
 }

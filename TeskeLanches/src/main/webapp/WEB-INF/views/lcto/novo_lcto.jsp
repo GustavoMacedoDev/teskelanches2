@@ -37,12 +37,24 @@
 				<div>
 					<form:checkboxes path="lanches" items="${lanches}" itemValue="id" itemLabel="nomeLanche" />
 			  		<input type="hidden" name="lanches" value="0"/>
+			  		
 				</div>
+				
+				<div>
+                	<label for="quantidadeLanche">Quantidade: </label>
+                	<form:input path="quantidadeLanche"  class="form-control"/>    
+                	<form:errors path="quantidadeLanche" cssClass="label label-danger"/>          
+           		</div>
 				
 				<form:label path="bebidas"><h3>Bebidas</h3></form:label>
 				<div>
 					<form:checkboxes path="bebidas" items="${bebidas}" itemValue="id" itemLabel="nomeBebida" />
 			  		<input type="hidden" name="bebidas" value="0"/>
+			  		<div class="form-group">
+                		<label for="quantidadeBebida">Quantidade: </label>
+                		<form:input path="quantidadeBebida"  class="form-control"/>    
+                		<form:errors path="quantidadeBebida" cssClass="label label-danger"/>          
+           			</div>
 				</div>
 			  <input type="hidden" name="bebidas" value="0"/>
 			</div>
