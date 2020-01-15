@@ -25,8 +25,6 @@ public class Pedido implements Serializable{
 	@ManyToOne
 	private Mesa mesa;
 	
-	@OneToMany(mappedBy = "pedido")
-	private List<ItensPedido> itensPedidos;
 	
 	public Pedido() {
 		// TODO Auto-generated constructor stub
@@ -64,12 +62,4 @@ public class Pedido implements Serializable{
 		this.mesa = mesa;
 	}
 
-	public List<ItensPedido> getItensPedidos() {
-		return itensPedidos;
-	}
-
-	public void setItensPedidos(List<ItensPedido> itensPedidos) {
-		this.itensPedidos = itensPedidos;
-	}
-	
 }

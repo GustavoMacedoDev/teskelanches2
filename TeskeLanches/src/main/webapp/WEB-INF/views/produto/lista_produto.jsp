@@ -39,13 +39,13 @@
             <tbody>
             <c:forEach var="produto" items="${produtos }">
                 <tr>
-                    <td>${produto.produto }</td>
+                    <td>${produto.descProduto }</td>
                     <td>${produto.valorProduto }</td>
                     <td>${produto.categoria}</td>
                     <td>                        
-                        <spring:url value="/produto/update/${produto.idProduto }" var="update"/>
+                        <spring:url value="/produto/update/${produto.id }" var="update"/>
                         <a class="btn btn-info" href="${update }" >Editar</a>
-                        <spring:url value="/produto/delete/${produto.idProduto }" var="delete"/>
+                        <spring:url value="/produto/delete/${produto.id }" var="delete"/>
                         <a class="btn btn-danger" href="${delete }" >Excluir</a>
                     </td>
                 </tr>

@@ -24,39 +24,28 @@
     <hr>
     <div>
     	<h1>Mesa: ${mesa.numero }</h1>
+    	<h1>Produto: ${lancamentoproduto.produto.id }</h1>
     </div>
    
-   <c:url var="save" value="/lancamento/save"/>
-	<form:form modelAttribute="lancamento" action="${save}" method="post">
+   <c:url var="save" value="/lancamentoproduto/save"/>
+	<form:form modelAttribute="lancamentoproduto" action="${save}" method="post">
 	  <input id="mesa.id" name="mesa.id" type="hidden" value="${mesa.id}"/>  
+	 
 		<fieldset>
-			<div class="campo">
-				<div>
-					<form:label path = "lanches"><h3>Lanches</h3></form:label>
-				</div>
-				<div>
-					<form:checkboxes path="lanches" items="${lanches}" itemValue="id" itemLabel="nomeLanche" />
-			  		<input type="hidden" name="lanches" value="0"/>
-			  		
-				</div>
+			<div class="form-group">
 				
-				<div>
-                	<label for="quantidadeLanche">Quantidade: </label>
-                	<form:input path="quantidadeLanche"  class="form-control"/>    
-                	<form:errors path="quantidadeLanche" cssClass="label label-danger"/>          
-           		</div>
-				
-				<form:label path="bebidas"><h3>Bebidas</h3></form:label>
-				<div>
-					<form:checkboxes path="bebidas" items="${bebidas}" itemValue="id" itemLabel="nomeBebida" />
-			  		<input type="hidden" name="bebidas" value="0"/>
-			  		<div class="form-group">
-                		<label for="quantidadeBebida">Quantidade: </label>
-                		<form:input path="quantidadeBebida"  class="form-control"/>    
-                		<form:errors path="quantidadeBebida" cssClass="label label-danger"/>          
-           			</div>
-				</div>
-			  <input type="hidden" name="bebidas" value="0"/>
+				<form:label path="produto">Selecione os lanches</form:label>
+				<form:select multiple="true" path="produto">
+					<form:options items="${produto}" itemValue="id" itemLabel="descProduto"/>
+					
+				</form:select>
+			  	
+				<div class="form-group">
+                	<label for="quantidade">Quantidade: </label>
+                	<form:input path="quantidade" class="form-control"/>   
+                	<form:errors path="quantidade" cssClass="label label-danger"/>             
+            	</div>
+            
 			</div>
 			<div>
 				 <button type="submit" class="btn btn-primary">Confirmar</button>

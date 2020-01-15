@@ -21,13 +21,13 @@
     </div>
     <hr>
     <div>
-    	<spring:url value="${produto.idProduto == null ? '/produto/save' : '/produto/update'}" var="save"/>
+    	<spring:url value="${produto.id == null ? '/produto/save' : '/produto/update'}" var="save"/>
         <form:form modelAttribute="produto" action="${save }" method="post">
-        	<form:hidden path="idProduto"/>
+        	<form:hidden path="id"/>
             <div class="form-group">
-                <label for="produto">Produto: </label>
-                <form:input path="produto" class="form-control"/>   
-                <form:errors path="produto" cssClass="label label-danger"/>             
+                <label for="descProduto">Produto: </label>
+                <form:input path="descProduto" class="form-control"/>   
+                <form:errors path="descProduto" cssClass="label label-danger"/>             
             </div>
             <div class="form-group">
                 <label for="valorProduto">Valor: </label>

@@ -1,16 +1,13 @@
 package br.com.macedo.sistemas.domain;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "produto")
-public class Produto implements Serializable{
+public class Produto{
 
-	private static final long serialVersionUID = 1L;
 
 	public enum Categoria {
 		BEBIDA, LANCHE, PORCAO
@@ -19,10 +16,10 @@ public class Produto implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_produto")
-	private Long idProduto;
+	private Long id;
 
 	@Column(name = "produto")
-	private String produto;
+	private String descProduto;
 	
 	@Column(name = "valor_produto")
 	private double valorProduto;
@@ -31,57 +28,47 @@ public class Produto implements Serializable{
 	@Column(name = "categoria", nullable = false)
 	private Categoria categoria;
 	
-	@OneToMany(mappedBy = "produto")
-	private List<ItensPedido> itensPedidos = new ArrayList<>();
+	@OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
+	private List<LancamentoProduto> lancamentoProdutos;
 	
 	
 	public Produto() {
-		// TODO Auto-generated constructor stub
-	}
-	
-
-	public Produto(Long idProduto) {
 		super();
-		this.idProduto = idProduto;
 	}
 	
 	
+	public Produto(Long id) {
+		this.id = id;
+	}
+
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Produto(List<LancamentoProduto> lancamentoProdutos) {
+		super();
+		this.lancamentoProdutos = lancamentoProdutos;
+	}
+
+
 	public Produto(Categoria categoria) {
 		super();
 		this.categoria = categoria;
 	}
 
-
-	public Produto(List<ItensPedido> itensPedidos) {
-		super();
-		this.itensPedidos = itensPedidos;
+	public String getDescProduto() {
+		return descProduto;
 	}
 
-	public Produto(Long idProduto, String produto, double valorProduto, List<ItensPedido> itensPedidos) {
-		super();
-		this.idProduto = idProduto;
-		this.produto = produto;
-		this.valorProduto = valorProduto;
-		this.itensPedidos = itensPedidos;
+	public void setDescProduto(String descProduto) {
+		this.descProduto = descProduto;
 	}
 
-
-
-	public Long getIdProduto() {
-		return idProduto;
-	}
-
-	public void setIdProduto(Long idProduto) {
-		this.idProduto = idProduto;
-	}
-
-	public String getProduto() {
-		return produto;
-	}
-
-	public void setProduto(String produto) {
-		this.produto = produto;
-	}
 
 	public double getValorProduto() {
 		return valorProduto;
@@ -89,14 +76,6 @@ public class Produto implements Serializable{
 
 	public void setValorProduto(double valorProduto) {
 		this.valorProduto = valorProduto;
-	}
-
-	public List<ItensPedido> getItensPedidos() {
-		return itensPedidos;
-	}
-
-	public void setItensPedidos(List<ItensPedido> itensPedidos) {
-		this.itensPedidos = itensPedidos;
 	}
 
 
@@ -109,5 +88,14 @@ public class Produto implements Serializable{
 		this.categoria = categoria;
 	}
 
+
+	public List<LancamentoProduto> getLancamentoProdutos() {
+		return lancamentoProdutos;
+	}
+
+
+	public void setLancamentoProdutos(List<LancamentoProduto> lancamentoProdutos) {
+		this.lancamentoProdutos = lancamentoProdutos;
+	}
 
 }
