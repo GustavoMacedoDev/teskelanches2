@@ -49,7 +49,7 @@ public class ProdutoDaoImpl implements ProdutoDao {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Produto> getTodos() {
-		String jpql = "from Produto p order by id asc";
+		String jpql = "from Produto p";
 		TypedQuery<Produto> query = entityManager.createQuery(jpql, Produto.class);
 		return query.getResultList();
 	}

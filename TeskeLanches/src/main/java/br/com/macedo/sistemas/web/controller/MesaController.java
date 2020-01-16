@@ -20,7 +20,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.macedo.sistemas.dao.MesaDao;
 import br.com.macedo.sistemas.dao.ProdutoDao;
 import br.com.macedo.sistemas.domain.Lancamento;
-import br.com.macedo.sistemas.domain.LancamentoProduto;
 import br.com.macedo.sistemas.domain.Mesa;
 import br.com.macedo.sistemas.domain.Produto;
 import br.com.macedo.sistemas.domain.Produto.Categoria;
@@ -57,7 +56,6 @@ public class MesaController {
 			return "/mesa/add_mesa";
 		}
 		
-		System.out.print(mesa);
 		daoMesa.salvar(mesa);
 
 		attr.addFlashAttribute("message", "Mesa salva");
@@ -65,18 +63,18 @@ public class MesaController {
 	}
 	
 	@RequestMapping(value = "/nova/{id}", method = RequestMethod.GET)
-	public ModelAndView preSave(@ModelAttribute("lancamentoproduto") LancamentoProduto lancamentoProduto, @PathVariable("id") Long id) {
+	public ModelAndView preSave(@ModelAttribute("lancamento") Lancamento lancamento, @PathVariable("id") Long id) {
 
 		ModelMap map = new ModelMap();
 		
 		Mesa mesa = daoMesa.getId(id);
 		
-		lanches = daoProduto.getByCategoria(Categoria.LANCHE);
+		lanches = daoProduto.getTodos();
 		bebidas = daoProduto.getByCategoria(Categoria.BEBIDA);
 		porcaos = daoProduto.getByCategoria(Categoria.PORCAO);
 		
 		map.addAttribute("mesa", mesa);
-		map.addAttribute("produto", lanches);
+		map.addAttribute("produtos", lanches);
 		
 		return new ModelAndView("/lcto/novo_lcto", map);
 	

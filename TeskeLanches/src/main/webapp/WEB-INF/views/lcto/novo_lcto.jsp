@@ -24,29 +24,27 @@
     <hr>
     <div>
     	<h1>Mesa: ${mesa.numero }</h1>
-    	<h1>Produto: ${lancamentoproduto.produto.id }</h1>
     </div>
    
-   <c:url var="save" value="/lancamentoproduto/save"/>
-	<form:form modelAttribute="lancamentoproduto" action="${save}" method="post">
+   <c:url var="save" value="/lancamento/save"/>
+	<form:form modelAttribute="lancamento" action="${save}" method="post">
 	  <input id="mesa.id" name="mesa.id" type="hidden" value="${mesa.id}"/>  
-	 
 		<fieldset>
 			<div class="form-group">
-				
-				<form:label path="produto">Selecione os lanches</form:label>
-				<form:select multiple="true" path="produto">
-					<form:options items="${produto}" itemValue="id" itemLabel="descProduto"/>
-					
+				<form:label path="produtos">Selecione os lanches</form:label>
+				<form:select multiple="true" path="produtos">
+					<form:options items="${produtos}" itemValue="id" itemLabel="descProduto"/>
 				</form:select>
-			  	
+				
+				<input type="hidden" name="produtos" value="0"/>
+			</div>
+			
 				<div class="form-group">
                 	<label for="quantidade">Quantidade: </label>
                 	<form:input path="quantidade" class="form-control"/>   
                 	<form:errors path="quantidade" cssClass="label label-danger"/>             
             	</div>
             
-			</div>
 			<div>
 				 <button type="submit" class="btn btn-primary">Confirmar</button>
 			</div>

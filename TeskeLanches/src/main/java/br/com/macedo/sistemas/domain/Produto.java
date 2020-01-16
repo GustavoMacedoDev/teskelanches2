@@ -1,12 +1,15 @@
 package br.com.macedo.sistemas.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "produto")
-public class Produto{
+public class Produto implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 
 	public enum Categoria {
@@ -28,9 +31,13 @@ public class Produto{
 	@Column(name = "categoria", nullable = false)
 	private Categoria categoria;
 	
-	@OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
-	private List<LancamentoProduto> lancamentoProdutos;
-	
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(
+			name = "lancamento_produto",	
+			joinColumns = @JoinColumn(name = "id_produto"),
+			inverseJoinColumns = @JoinColumn(name = "id_lancamento")
+		)
+	private List<Lancamento> lancamentos;
 	
 	public Produto() {
 		super();
@@ -50,16 +57,6 @@ public class Produto{
 		this.id = id;
 	}
 
-	public Produto(List<LancamentoProduto> lancamentoProdutos) {
-		super();
-		this.lancamentoProdutos = lancamentoProdutos;
-	}
-
-
-	public Produto(Categoria categoria) {
-		super();
-		this.categoria = categoria;
-	}
 
 	public String getDescProduto() {
 		return descProduto;
@@ -89,13 +86,13 @@ public class Produto{
 	}
 
 
-	public List<LancamentoProduto> getLancamentoProdutos() {
-		return lancamentoProdutos;
+	public List<Lancamento> getLancamentos() {
+		return lancamentos;
 	}
 
 
-	public void setLancamentoProdutos(List<LancamentoProduto> lancamentoProdutos) {
-		this.lancamentoProdutos = lancamentoProdutos;
+	public void setLancamentos(List<Lancamento> lancamentos) {
+		this.lancamentos = lancamentos;
 	}
 
 }

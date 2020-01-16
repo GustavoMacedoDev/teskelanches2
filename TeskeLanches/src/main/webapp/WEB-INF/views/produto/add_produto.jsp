@@ -37,7 +37,7 @@
             
             <div class="form-group">
 				<form:label path="categoria">Categoria</form:label><br>
-				<form:select path="categoria" required="true">
+				<form:select path="categoria" required="true" >
 					<form:option value="BEBIDA" label="BEBIDA"/>
 					<form:option value="LANCHE" label="LANCHE"/>
 					<form:option value="PORCAO" label="PORÇÃO"/>
