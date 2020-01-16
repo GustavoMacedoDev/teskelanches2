@@ -16,16 +16,11 @@ public class Lancamento implements Serializable{
 	@Column(name = "id_lancamento")
 	private Long id;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(
-			name = "lancamento_produto",	
-			joinColumns = @JoinColumn(name = "id_lancamento"),
-			inverseJoinColumns = @JoinColumn(name = "id_produto")
-		)
-	private List<Produto> produtos;
+	@OneToMany(mappedBy = "lancamento")
+	private List<LancamentoProduto> lancamentosProdutos;
 	
-	@Column
-	private int quantidade;
+	@ManyToOne
+	private Mesa mesa;
 	
 	
 	public Lancamento() {
@@ -36,9 +31,6 @@ public class Lancamento implements Serializable{
 		this.id = id;
 	}
 
-	public Lancamento(List<Produto> produtos) {
-		this.produtos = produtos;
-	}
 
 	public Long getId() {
 		return id;
@@ -48,21 +40,21 @@ public class Lancamento implements Serializable{
 		this.id = id;
 	}
 
-	public List<Produto> getProdutos() {
-		return produtos;
+
+	public List<LancamentoProduto> getLancamentosProdutos() {
+		return lancamentosProdutos;
 	}
 
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
+	public void setLancamentosProdutos(List<LancamentoProduto> lancamentosProdutos) {
+		this.lancamentosProdutos = lancamentosProdutos;
 	}
 
-	public int getQuantidade() {
-		return quantidade;
+	public Mesa getMesa() {
+		return mesa;
 	}
 
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
+	public void setMesa(Mesa mesa) {
+		this.mesa = mesa;
 	}
-	
 	
 }

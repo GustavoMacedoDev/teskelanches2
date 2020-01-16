@@ -21,7 +21,7 @@ public class Mesa {
 	private int statusMesa = 0;
 	
 	@OneToMany(mappedBy = "mesa")
-	private List<Pedido> pedidos;
+	private List<Lancamento> lancamento;
 	
 	public Mesa() {
 		super();
@@ -62,14 +62,12 @@ public class Mesa {
 		this.statusMesa = statusMesa;
 	}
 
-	public List<Pedido> getPedidos() {
-		return pedidos;
+	public List<Lancamento> getLancamento() {
+		return lancamento;
 	}
 
-	public void setPedidos(List<Pedido> pedidos) {
-		this.pedidos = pedidos;
+	public void setLancamento(List<Lancamento> lancamento) {
+		this.lancamento = lancamento;
 	}
 
-	
-	
 }

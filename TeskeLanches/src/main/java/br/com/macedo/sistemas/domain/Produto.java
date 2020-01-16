@@ -31,13 +31,9 @@ public class Produto implements Serializable{
 	@Column(name = "categoria", nullable = false)
 	private Categoria categoria;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(
-			name = "lancamento_produto",	
-			joinColumns = @JoinColumn(name = "id_produto"),
-			inverseJoinColumns = @JoinColumn(name = "id_lancamento")
-		)
-	private List<Lancamento> lancamentos;
+	@OneToMany(mappedBy = "produto")
+	private List<LancamentoProduto> lancamentosProdutos;
+	
 	
 	public Produto() {
 		super();
@@ -86,13 +82,13 @@ public class Produto implements Serializable{
 	}
 
 
-	public List<Lancamento> getLancamentos() {
-		return lancamentos;
+	public List<LancamentoProduto> getLancamentosProdutos() {
+		return lancamentosProdutos;
 	}
 
 
-	public void setLancamentos(List<Lancamento> lancamentos) {
-		this.lancamentos = lancamentos;
+	public void setLancamentosProdutos(List<LancamentoProduto> lancamentosProdutos) {
+		this.lancamentosProdutos = lancamentosProdutos;
 	}
 
 }

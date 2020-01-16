@@ -17,6 +17,7 @@ public class ProdutoConverter implements Converter<String[], List<Produto>>{
 	
 	public List<Produto> convert(String[] ids) {  
         List<Produto> list = new ArrayList<Produto>();  
+        
         for (String id : ids) {  
             if (!id.equals("0")) {  
                 list.add(new Produto(Long.parseLong(id)));  

@@ -14,6 +14,8 @@ public interface LancamentoDao {
 	
 	Lancamento getId(Long id);
 	
+	Lancamento getByMesa(Long id);
+	
 	List<Lancamento> getTodos();
 
 }

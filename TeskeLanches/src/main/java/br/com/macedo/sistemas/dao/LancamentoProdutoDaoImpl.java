@@ -4,29 +4,27 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.macedo.sistemas.domain.Lancamento;
-import br.com.macedo.sistemas.domain.Mesa;
+import br.com.macedo.sistemas.domain.LancamentoProduto;
 
 @Repository
 @Transactional
-public class LancamentoDaoImpl implements LancamentoDao{
+public class LancamentoProdutoDaoImpl implements LancamentoProdutoDao{
 
 	@PersistenceContext
 	private EntityManager entityManager;
 	
 	@Override
-	public void salvar(Lancamento lancamento) {
-		entityManager.persist(lancamento);
+	public void salvar(LancamentoProduto lancamentoProduto) {
+		entityManager.persist(lancamentoProduto);
 		
 	}
 
 	@Override
-	public void editar(Lancamento lancamento) {
+	public void editar(LancamentoProduto lancamentoProduto) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -38,23 +36,15 @@ public class LancamentoDaoImpl implements LancamentoDao{
 	}
 
 	@Override
-	public Lancamento getId(Long id) {
+	public LancamentoProduto getId(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Lancamento> getTodos() {
+	public List<LancamentoProduto> getTodos() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public Lancamento getByMesa(Long id) {
-		String jpql = "from Lancamento l where l.id = :id";
-        TypedQuery<Lancamento> query = entityManager.createQuery(jpql, Lancamento.class);
-        query.setParameter("id", id);
-        return query.getSingleResult();
 	}
 
 }

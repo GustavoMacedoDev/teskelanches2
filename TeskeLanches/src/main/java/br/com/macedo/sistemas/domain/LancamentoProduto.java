@@ -2,31 +2,36 @@ package br.com.macedo.sistemas.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "lancamento_produto")
 public class LancamentoProduto implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Produto produto;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Lancamento lancamento;
+	
 	@Column(name = "quantidade", nullable = false)
 	private int quantidade;
 
+
+	public LancamentoProduto() {
+		super();
+	}
 	
-	
+	public LancamentoProduto(Long id) {
+		this.id = id;
+	}
+
 	public int getQuantidade() {
 		return quantidade;
 	}
@@ -42,6 +47,23 @@ public class LancamentoProduto implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+
+	public Lancamento getLancamento() {
+		return lancamento;
+	}
+
+	public void setLancamento(Lancamento lancamento) {
+		this.lancamento = lancamento;
+	}
+	
 	
 	
 }
