@@ -20,11 +20,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.macedo.sistemas.dao.LancamentoDao;
 import br.com.macedo.sistemas.dao.MesaDao;
 import br.com.macedo.sistemas.dao.ProdutoDao;
+import br.com.macedo.sistemas.dao.QuantidadeDao;
 import br.com.macedo.sistemas.domain.Lancamento;
 import br.com.macedo.sistemas.domain.LancamentoProduto;
 import br.com.macedo.sistemas.domain.Mesa;
 import br.com.macedo.sistemas.domain.Produto;
 import br.com.macedo.sistemas.domain.Produto.Categoria;
+import br.com.macedo.sistemas.domain.Quantidade;
 
 @Controller
 @RequestMapping("mesa")
@@ -39,9 +41,14 @@ public class MesaController {
 	@Autowired
 	private LancamentoDao daoLancamento;
 	
+	@Autowired
+	private QuantidadeDao daoQuantidade;
+	
 	private List<Produto> lanches;
 	private List<Produto> bebidas;
 	private List<Produto> porcaos;
+	
+	private List<Quantidade> quantidades;
 	
 	
 	@RequestMapping(value = "/todos", method = RequestMethod.GET)
@@ -84,9 +91,12 @@ public class MesaController {
 		bebidas = daoProduto.getByCategoria(Categoria.BEBIDA);
 		porcaos = daoProduto.getByCategoria(Categoria.PORCAO);
 		
+		quantidades = daoQuantidade.getTodos();
+		
 		map.addAttribute("mesa", mesa);
 		map.addAttribute("lancamento", lancamento);
 		map.addAttribute("produto", lanches);
+		map.addAttribute("quantidade", quantidades);
 		
 		return new ModelAndView("/lcto/novo_lcto", map);
 	

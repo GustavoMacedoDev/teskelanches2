@@ -15,14 +15,16 @@ public class LancamentoProduto implements Serializable{
 	private Long id;
 	
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(nullable = false)
 	private Produto produto;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(nullable = false)
 	private Lancamento lancamento;
 	
-	@Column(name = "quantidade", nullable = false)
-	private int quantidade;
-
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(nullable = false)
+	private Quantidade quantidade;
 
 	public LancamentoProduto() {
 		super();
@@ -32,11 +34,11 @@ public class LancamentoProduto implements Serializable{
 		this.id = id;
 	}
 
-	public int getQuantidade() {
+	public Quantidade getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(int quantidade) {
+	public void setQuantidade(Quantidade quantidade) {
 		this.quantidade = quantidade;
 	}
 

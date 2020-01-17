@@ -27,6 +27,8 @@ public class LancamentoProdutoController {
 			RedirectAttributes attr) {
 		
 		
+		System.out.print(lancamentoProduto.getProduto());
+		
 		daoLancamento.salvar(lancamentoProduto);
 		
 		

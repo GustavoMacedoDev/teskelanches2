@@ -31,7 +31,7 @@ public class Produto implements Serializable{
 	@Column(name = "categoria", nullable = false)
 	private Categoria categoria;
 	
-	@OneToMany(mappedBy = "produto")
+	@OneToMany(mappedBy = "produto", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<LancamentoProduto> lancamentosProdutos;
 	
 	

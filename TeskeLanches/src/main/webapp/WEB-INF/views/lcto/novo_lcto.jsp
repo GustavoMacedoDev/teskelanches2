@@ -36,13 +36,16 @@
 				<form:label path="produto">Selecione os lanches</form:label><br>
 				<form:select multiple="true" path="produto"><br>
 					<form:options items="${produto}" itemValue="id" itemLabel="descProduto"/> 
-					
+					<input type="hidden" name="produto" value="0" />
 				</form:select>
 				
 			</div>
-			<div>
-				<label for="quantidade">Quantidade: </label>
-				<form:input path="quantidade" type="number" min="0" value="quantidade" id="quantidade"/>  
+			<div class="form-group">
+				<form:label path="quantidade">Selecione os lanches</form:label><br>
+				<form:select multiple="true" path="quantidade"><br>
+					<form:options items="${quantidade}" itemValue="id" itemLabel="valor"/> 
+				</form:select>
+				
 			</div>
 		
 			<div>

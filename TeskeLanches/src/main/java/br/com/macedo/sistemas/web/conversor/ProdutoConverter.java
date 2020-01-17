@@ -21,6 +21,8 @@ public class ProdutoConverter implements Converter<String[], List<Produto>>{
         for (String id : ids) {  
             if (!id.equals("0")) {  
                 list.add(new Produto(Long.parseLong(id)));  
+                
+                System.out.print(list);
             }  
         }  
         return list;  
