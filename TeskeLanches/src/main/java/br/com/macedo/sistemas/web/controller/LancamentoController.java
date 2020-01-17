@@ -12,8 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.macedo.sistemas.dao.LancamentoDao;
+import br.com.macedo.sistemas.dao.MesaDao;
 import br.com.macedo.sistemas.domain.Lancamento;
-import br.com.macedo.sistemas.domain.LancamentoProduto;
 
 @Controller
 @RequestMapping("lancamento")
@@ -22,7 +22,8 @@ public class LancamentoController {
 	@Autowired
 	private LancamentoDao daoLancamento;
 	
-	LancamentoProduto lancamentoProduto = new LancamentoProduto();
+	@Autowired
+	private MesaDao daoMesa;
 	
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -31,6 +32,7 @@ public class LancamentoController {
 		
 		
 		daoLancamento.salvar(lancamento);
+		daoMesa.abreMesa(lancamento.getMesa().getId());
 		
 		attr.addFlashAttribute("message", "Pedido salvo");
 		return new ModelAndView("redirect:/mesa/todos");

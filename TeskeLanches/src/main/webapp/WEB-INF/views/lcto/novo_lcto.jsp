@@ -26,27 +26,23 @@
     	<h1>Mesa: ${mesa.numero }</h1>
     </div>
    
-   <c:url var="save" value="/lancamentoProduto/save"/>
-	<form:form modelAttribute="lancamentoProduto" action="${save}" method="post">
+   <c:url var="save" value="/lancamento/save"/>
+	<form:form modelAttribute="lancamento" action="${save}" method="post">
 	  <input id="mesa.id" name="mesa.id" type="hidden" value="${mesa.id}"/>  
-	  	  <input id="lancamento.id" name="lancamento.id" type="hidden" value="${lancamento.id}"/>  
-	  
 		<fieldset>
 			<div class="form-group">
-				<form:label path="produto">Selecione os lanches</form:label><br>
-				<form:select multiple="true" path="produto"><br>
-					<form:options items="${produto}" itemValue="id" itemLabel="descProduto"/> 
-					<input type="hidden" name="produto" value="0" />
+				<form:label path="produtos">Selecione os lanches</form:label><br>
+				<form:select multiple="true" path="produtos"><br>
+					<form:options items="${produtos}" itemValue="id" itemLabel="descProduto"/>
+					<input type="hidden" name="produtos" value="0" /> 
 				</form:select>
 				
 			</div>
 			<div class="form-group">
-				<form:label path="quantidade">Selecione os lanches</form:label><br>
-				<form:select multiple="true" path="quantidade"><br>
-					<form:options items="${quantidade}" itemValue="id" itemLabel="valor"/> 
-				</form:select>
-				
-			</div>
+                <label for="quantidade">Quantidade: </label>
+                <form:input path="quantidade" class="form-control"/>   
+                <form:errors path="quantidade" cssClass="label label-danger"/>             
+            </div>
 		
 			<div>
 				 <button type="submit" class="btn btn-primary">Confirmar</button>

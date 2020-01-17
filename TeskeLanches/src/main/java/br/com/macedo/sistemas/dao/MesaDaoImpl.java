@@ -69,7 +69,7 @@ public class MesaDaoImpl implements MesaDao{
 
 	@Override
 	public Mesa abreMesa(Long id) {
-		Query query = entityManager.createNativeQuery("update Mesa m set status_mesa = 1 where m.id = :id");
+		Query query = entityManager.createNativeQuery("update Mesa m set status_mesa = 1 where m.mesa_id = :id");
 		query.setParameter("id", id);
 		query.executeUpdate();
 		

@@ -1,23 +1,28 @@
 package br.com.macedo.sistemas.domain;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "lancamento")
-public class Lancamento implements Serializable{
+public class Lancamento {
 	
-	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_lancamento")
 	private Long id;
 	
-	@OneToMany(mappedBy = "lancamento")
-	private List<LancamentoProduto> lancamentosProdutos;
+	@Column
+	private int quantidade;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(
+			name = "lancamento_produto",	
+			joinColumns = @JoinColumn(name = "id_lancamento"),
+			inverseJoinColumns = @JoinColumn(name = "id_produto")
+		)
+	private List<Produto> produtos;
 	
 	@ManyToOne
 	private Mesa mesa;
@@ -32,6 +37,11 @@ public class Lancamento implements Serializable{
 	}
 
 
+	public Lancamento(List<Produto> produtos) {
+		super();
+		this.produtos = produtos;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -40,21 +50,29 @@ public class Lancamento implements Serializable{
 		this.id = id;
 	}
 
-
-	public List<LancamentoProduto> getLancamentosProdutos() {
-		return lancamentosProdutos;
-	}
-
-	public void setLancamentosProdutos(List<LancamentoProduto> lancamentosProdutos) {
-		this.lancamentosProdutos = lancamentosProdutos;
-	}
-
 	public Mesa getMesa() {
 		return mesa;
 	}
 
 	public void setMesa(Mesa mesa) {
 		this.mesa = mesa;
+	}
+
+
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
 	}
 	
 }

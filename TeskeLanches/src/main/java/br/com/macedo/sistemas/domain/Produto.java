@@ -1,16 +1,12 @@
 package br.com.macedo.sistemas.domain;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "produto")
-public class Produto implements Serializable{
-
-	private static final long serialVersionUID = 1L;
-
+public class Produto {
 
 	public enum Categoria {
 		BEBIDA, LANCHE, PORCAO
@@ -31,9 +27,13 @@ public class Produto implements Serializable{
 	@Column(name = "categoria", nullable = false)
 	private Categoria categoria;
 	
-	@OneToMany(mappedBy = "produto", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private List<LancamentoProduto> lancamentosProdutos;
-	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(
+			name = "lancamento_produto",	
+			joinColumns = @JoinColumn(name = "id_produto"),
+			inverseJoinColumns = @JoinColumn(name = "id_lancamento")
+		)
+	private List<Lancamento> lancamentos;
 	
 	public Produto() {
 		super();
@@ -82,13 +82,13 @@ public class Produto implements Serializable{
 	}
 
 
-	public List<LancamentoProduto> getLancamentosProdutos() {
-		return lancamentosProdutos;
+	public List<Lancamento> getLancamentos() {
+		return lancamentos;
 	}
 
 
-	public void setLancamentosProdutos(List<LancamentoProduto> lancamentosProdutos) {
-		this.lancamentosProdutos = lancamentosProdutos;
+	public void setLancamentos(List<Lancamento> lancamentos) {
+		this.lancamentos = lancamentos;
 	}
 
 }

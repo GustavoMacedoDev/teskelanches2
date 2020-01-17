@@ -50,11 +50,12 @@ public class LancamentoDaoImpl implements LancamentoDao{
 	}
 
 	@Override
-	public Lancamento getByMesa(Long id) {
-		String jpql = "from Lancamento l where l.id = :id";
-        TypedQuery<Lancamento> query = entityManager.createQuery(jpql, Lancamento.class);
-        query.setParameter("id", id);
-        return query.getSingleResult();
+	@Transactional(readOnly = true)
+	public List<Lancamento> getByMesa(Long id) {
+		String jpql = "select l from Lancamento l where l.mesa.id = :id";
+		TypedQuery<Lancamento> query = entityManager.createQuery(jpql, Lancamento.class);
+		query.setParameter("id", id);
+		return query.getResultList();
 	}
 
 }
